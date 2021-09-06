@@ -208,8 +208,53 @@ type Component struct {
 
 // ComponentConfig is a componentconfig
 type ComponentConfig struct {
-	Priority  *[]string `json:"priority,omitempty"`
-	Algorithm *[]string `json:"algorithm,omitempty"`
+	Enabled                              []string      `json:"enabled"`
+	Priority                             []string      `json:"priority"`
+	FullSyncPeriod                       []string      `json:"fullSyncPeriod"`
+	ChangedSyncPeriod                    []string      `json:"changedSyncPeriod"`
+	CachePolicy                          []string      `json:"cachePolicy"`
+	EvictionDay                          []interface{} `json:"evictionDay"`
+	EvictionHour                         []interface{} `json:"evictionHour"`
+	EvictionMinute                       []interface{} `json:"evictionMinute"`
+	MaxLifespan                          []interface{} `json:"maxLifespan"`
+	BatchSizeForSync                     []string      `json:"batchSizeForSync"`
+	EditMode                             []interface{} `json:"editMode"`
+	ImportEnabled                        []string      `json:"importEnabled"`
+	SyncRegistrations                    []string      `json:"syncRegistrations"`
+	Vendor                               []string      `json:"vendor"`
+	UsePasswordModifyExtendedOp          []interface{} `json:"usePasswordModifyExtendedOp"`
+	UsernameLDAPAttribute                []string      `json:"usernameLDAPAttribute"`
+	RdnLDAPAttribute                     []string      `json:"rdnLDAPAttribute"`
+	UuidLDAPAttribute                    []string      `json:"uuidLDAPAttribute"`
+	UserObjectClasses                    []string      `json:"userObjectClasses"`
+	ConnectionUrl                        []string      `json:"connectionUrl"`
+	UsersDn                              []string      `json:"usersDn"`
+	AuthType                             []string      `json:"authType"`
+	StartTls                             []interface{} `json:"startTls"`
+	BindDn                               []string      `json:"bindDn"`
+	BindCredential                       []string      `json:"bindCredential"`
+	CustomUserSearchFilter               []interface{} `json:"customUserSearchFilter"`
+	SearchScope                          []string      `json:"searchScope"`
+	ValidatePasswordPolicy               []string      `json:"validatePasswordPolicy"`
+	TrustEmail                           []string      `json:"trustEmail"`
+	UseTruststoreSpi                     []string      `json:"useTruststoreSpi"`
+	ConnectionPooling                    []string      `json:"connectionPooling"`
+	ConnectionPoolingAuthentication      []interface{} `json:"connectionPoolingAuthentication"`
+	ConnectionPoolingDebug               []interface{} `json:"connectionPoolingDebug"`
+	ConnectionPoolingInitSize            []interface{} `json:"connectionPoolingInitSize"`
+	ConnectionPoolingMaxSize             []interface{} `json:"connectionPoolingMaxSize"`
+	ConnectionPoolingPrefSize            []interface{} `json:"connectionPoolingPrefSize"`
+	ConnectionPoolingProtocol            []interface{} `json:"connectionPoolingProtocol"`
+	ConnectionPoolingTimeout             []interface{} `json:"connectionPoolingTimeout"`
+	ConnectionTimeout                    []interface{} `json:"connectionTimeout"`
+	ReadTimeout                          []interface{} `json:"readTimeout"`
+	Pagination                           []string      `json:"pagination"`
+	AllowKerberosAuthentication          []string      `json:"allowKerberosAuthentication"`
+	ServerPrincipal                      []interface{} `json:"serverPrincipal"`
+	KeyTab                               []interface{} `json:"keyTab"`
+	KerberosRealm                        []interface{} `json:"kerberosRealm"`
+	Debug                                []string      `json:"debug"`
+	UseKerberosForPasswordAuthentication []string      `json:"useKerberosForPasswordAuthentication"`
 }
 
 // KeyStoreConfig holds the keyStoreConfig
