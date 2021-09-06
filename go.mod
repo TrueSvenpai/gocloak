@@ -1,4 +1,4 @@
-module github.com/Nerzal/gocloak/v9
+module github.com/TrueSvenpai/gocloak/v9
 
 go 1.15
 
