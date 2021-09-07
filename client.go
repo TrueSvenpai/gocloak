@@ -1309,6 +1309,7 @@ func (client *gocloak) GetUserFederationComponents(ctx context.Context, token, r
 	var result []*Component
 	resp, err := client.getRequestWithBearerAuth(ctx, token).
 		SetResult(&result).
+		SetQueryParam("type", "org.keycloak.storage.UserStorageProvider").
 		Get(client.getAdminRealmURL(realm, "components"))
 
 	if err := checkForError(resp, err, errMessage); err != nil {

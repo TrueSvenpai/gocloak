@@ -155,6 +155,8 @@ type GoCloak interface {
 	GetKeyStoreConfig(ctx context.Context, accessToken, realm string) (*KeyStoreConfig, error)
 	// GetComponents gets components of the given realm
 	GetComponents(ctx context.Context, accessToken, realm string) ([]*Component, error)
+	// GetUserFederationComponents gets all USer Federation Components
+	GetUserFederationComponents(ctx context.Context, token, realm string)
 	// GetDefaultGroups returns a list of default groups
 	GetDefaultGroups(ctx context.Context, accessToken, realm string) ([]*Group, error)
 	// AddDefaultGroup adds group to the list of default groups
