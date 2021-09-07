@@ -156,7 +156,7 @@ type GoCloak interface {
 	// GetComponents gets components of the given realm
 	GetComponents(ctx context.Context, accessToken, realm string) ([]*Component, error)
 	// GetUserFederationComponents gets all USer Federation Components
-	GetUserFederationComponents(ctx context.Context, token, realm string)
+	GetUserFederationComponents(ctx context.Context, token, realm string) ([]*Component, error)
 	// GetDefaultGroups returns a list of default groups
 	GetDefaultGroups(ctx context.Context, accessToken, realm string) ([]*Group, error)
 	// AddDefaultGroup adds group to the list of default groups
