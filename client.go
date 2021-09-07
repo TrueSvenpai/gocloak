@@ -714,6 +714,20 @@ func (client *gocloak) CreateComponent(ctx context.Context, token, realm string,
 	return getID(resp), nil
 }
 
+func (client *gocloak) SyncComponent(ctx context.Context, token, realm string, id string) (string, error) {
+	const errMessage = "could not sync component"
+
+	resp, err := client.getRequestWithBearerAuth(ctx, token).
+		SetQueryParam("action", "triggerFullSync").
+		Post(client.getAdminRealmURL(realm, "user-storage", id, "sync"))
+
+	if err := checkForError(resp, err, errMessage); err != nil {
+		return "", err
+	}
+
+	return getID(resp), nil
+}
+
 func (client *gocloak) CreateClient(ctx context.Context, accessToken, realm string, newClient Client) (string, error) {
 	const errMessage = "could not create client"
 
@@ -1275,6 +1289,21 @@ func (client *gocloak) GetKeyStoreConfig(ctx context.Context, token, realm strin
 
 // GetComponents get all components in realm
 func (client *gocloak) GetComponents(ctx context.Context, token, realm string) ([]*Component, error) {
+	const errMessage = "could not get components"
+
+	var result []*Component
+	resp, err := client.getRequestWithBearerAuth(ctx, token).
+		SetResult(&result).
+		Get(client.getAdminRealmURL(realm, "components"))
+
+	if err := checkForError(resp, err, errMessage); err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
+func (client *gocloak) GetUserFederationComponents(ctx context.Context, token, realm string) ([]*Component, error) {
 	const errMessage = "could not get components"
 
 	var result []*Component
