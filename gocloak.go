@@ -272,6 +272,8 @@ type GoCloak interface {
 	AddClientRoleComposite(ctx context.Context, token, realm, roleID string, roles []Role) error
 	// DeleteClientRoleComposite deletes composites from a role
 	DeleteClientRoleComposite(ctx context.Context, token, realm, roleID string, roles []Role) error
+	// SyncComponent triggers sync of users
+	SyncComponent(ctx context.Context, token, realm string, id string) (string, error)
 
 	// *** Realm ***
 
