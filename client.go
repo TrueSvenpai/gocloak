@@ -714,6 +714,20 @@ func (client *gocloak) CreateComponent(ctx context.Context, token, realm string,
 	return getID(resp), nil
 }
 
+func (client *gocloak) UpdateComponent(ctx context.Context, token, realm string, component Component) (string, error) {
+	const errMessage = "could not create component"
+
+	resp, err := client.getRequestWithBearerAuth(ctx, token).
+		SetBody(component).
+		Put(client.getAdminRealmURL(realm, "components", *component.ID))
+
+	if err := checkForError(resp, err, errMessage); err != nil {
+		return "", err
+	}
+
+	return getID(resp), nil
+}
+
 func (client *gocloak) SyncComponent(ctx context.Context, token, realm string, id string) (string, error) {
 	const errMessage = "could not sync component"
 
